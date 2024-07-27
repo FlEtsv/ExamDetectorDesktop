@@ -1,0 +1,17 @@
+Index: src/imagecv/ProcesadorImagen.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/imagecv/ProcesadorImagen.java b/src/imagecv/ProcesadorImagen.java
+--- a/src/imagecv/ProcesadorImagen.java	(date 1718266611881)
++++ b/src/imagecv/ProcesadorImagen.java	
+@@ -279,7 +279,7 @@
+      * @return Verdadero si cumple con los criterios, falso de lo contrario
+      */
+     private static boolean esColumna(Rect rect, Mat img) {
+-        int minHeight = 100;
++        int minHeight = 1200;
+         double minAreaPercent = 0.05; // 5% del área total
+         double maxAreaPercent = 0.1; // 20% del área total
+ 

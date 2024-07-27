@@ -1,0 +1,36 @@
+Index: src/imagecv/ProcesadorImagen.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/imagecv/ProcesadorImagen.java b/src/imagecv/ProcesadorImagen.java
+--- a/src/imagecv/ProcesadorImagen.java	
++++ b/src/imagecv/ProcesadorImagen.java	(date 1718266164307)
+@@ -120,7 +120,7 @@
+ 
+         for (MatOfPoint contorno : contornos) {
+             Rect rect = Imgproc.boundingRect(contorno);
+-            if (esColumna(rect) && !estaSolapando(rect, columnasDetectadas)) {
++            if (esColumna(rect,src) && !estaSolapando(rect, columnasDetectadas)) {
+                 columnasDetectadas.add(rect);
+             }
+         }
+@@ -278,10 +278,15 @@
+      * @param rect El rectángulo a verificar
+      * @return Verdadero si cumple con los criterios, falso de lo contrario
+      */
+-    private static boolean esColumna(Rect rect) {
++    private static boolean esColumna(Rect rect, Mat img) {
+         int minHeight = 50;
+-        int minArea = 5000;
+-        return rect.height > rect.width * 2 && rect.height > minHeight && rect.area() > minArea;
++        double minAreaPercent = 0.2; // 5% del área total
++        double maxAreaPercent = 0.4; // 20% del área total
++
++        double totalArea = img.rows() * img.cols();
++        double rectAreaPercent = (rect.area() / totalArea) * 100;
++
++        return rect.height > rect.width * 2 && rect.height > minHeight && rectAreaPercent > minAreaPercent && rectAreaPercent < maxAreaPercent;
+     }
+ 
+     /**
