@@ -28,7 +28,7 @@ si damos al boton de calcular calificacion nos muestra la calificacion obtenida.
 El menu archivo nos permite ver las imagenes del proceso para ver que es lo que va a obtener.
 ![img_3.png](img_3.png)
 
-Esta plantilla es un ejemplo de como se puede documentar un proyecto en Java. 
+Esta plantilla es un ejemplo de como se puede hacer un reconocimiento de examenes para openCV. 
 ```
 
 
